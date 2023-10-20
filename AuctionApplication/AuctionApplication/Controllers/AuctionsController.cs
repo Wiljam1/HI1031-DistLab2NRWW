@@ -172,6 +172,21 @@ namespace AuctionApplication.Controllers
             return View(vm);
         }
 
+        
+
+        public ActionResult MyWonAuctions() 
+        {
+            string userName = User.Identity.Name; 
+            if (userName == null) return Forbid();
+            List<Auction> auctions = _auctionService.getMyWonAuctions(userName);
+            List<AuctionVM> auctionVMs = new();
+            foreach (var auction in auctions)
+            {
+                auctionVMs.Add(AuctionVM.FromAuction(auction));
+            }
+            return View(auctionVMs);
+        }
+
         /*
         // GET: AuctionsController/Delete/5
         public ActionResult Delete(int id)

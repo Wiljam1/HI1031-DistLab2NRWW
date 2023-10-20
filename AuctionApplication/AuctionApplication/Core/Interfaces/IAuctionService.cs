@@ -9,5 +9,6 @@
         void Add(Bid bid, int auctionId);
         void UpdateAuctionDescription(Auction auction);
         int GetHighestBidForAuction(Auction auction);
+        List<Auction> getMyWonAuctions(string userName);
     }
 }

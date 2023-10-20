@@ -1,5 +1,5 @@
 ﻿using AuctionApplication.Core.Interfaces;
-using AutoMapper;
+
 
 namespace AuctionApplication.Core;
 
@@ -78,6 +78,31 @@ public class AuctionService : IAuctionService
                 highestBid = bid.Amount;
         }
         return Math.Max(highestBid, auction.InitialPrice);
+    }
+
+    public List<Auction> getMyWonAuctions(string userName)
+    {
+        List<Auction> auctions = GetAll();
+        List<Auction> myWonAuctions = new List<Auction>();
+        foreach (var auction in auctions)
+        {
+            int highestBid = GetHighestBidForAuction(auction);
+            if (highestBid != auction.InitialPrice)
+            {
+                foreach (var bid in auction.Bids)
+                {
+                    if(highestBid == bid.Amount && bid.UserName.Equals(userName) && auction.FinalDate < DateTime.Now )
+                    {
+                        myWonAuctions.Add(auction); break;
+                    }
+                }
+            }
+            else if (auction.UserName.Equals(userName))     //adds a won auction if no one bidded on the auction to the one whos auction it was
+            {
+                myWonAuctions.Add(auction);
+            }
+        }
+        return myWonAuctions;
     }
 
     public void UpdateAuctionDescription(Auction auction)
