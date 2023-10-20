@@ -164,12 +164,10 @@ namespace AuctionApplication.Controllers
             {
                 if (vm.Amount <= vm.HighestBidAmount) 
                     return View(vm);
-                else
-                {
-                    Bid bid = new Bid(User.Identity.Name, vm.Amount);
-                    _auctionService.Add(bid, vm.AuctionId);
-                    return RedirectToAction("Index");
-                }
+
+                Bid bid = new Bid(User.Identity.Name, vm.Amount);
+                _auctionService.Add(bid, vm.AuctionId);
+                return RedirectToAction("Index");
             }
             return View(vm);
         }
