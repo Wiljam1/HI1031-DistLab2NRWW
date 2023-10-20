@@ -66,7 +66,11 @@ namespace AuctionApplication.Controllers
                 Auction auction = new Auction()
                 {
                     Title = vm.Title,
-                    UserName = User.Identity.Name // may be null if create auction page is accessed when not logged in.
+                    Description = vm.Description,
+                    UserName = User.Identity.Name, // may be null if create auction page is accessed when not logged in.
+                    InitialPrice = vm.InitialPrice,
+                    FinalDate = vm.FinalDate,
+
                 };
                 _auctionService.Add(auction);
                 return RedirectToAction("Index");
