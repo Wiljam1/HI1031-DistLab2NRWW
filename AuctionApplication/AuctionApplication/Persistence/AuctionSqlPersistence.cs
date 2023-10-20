@@ -1,5 +1,6 @@
 ﻿using AuctionApplication.Core;
 using AuctionApplication.Core.Interfaces;
+using AuctionApplication.ViewModels;
 using AutoMapper;
 using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
 using Microsoft.EntityFrameworkCore;
@@ -89,5 +90,12 @@ public class AuctionSqlPersistence : IAuctionPersistence
         }
 
         return auction;
+    }
+
+    public void UpdateAuctionDescription(Auction auction)
+    {
+        AuctionDb auctiondb = _mapper.Map<AuctionDb>(auction);
+        _unitOfWork.AuctionRepository.Update(auctiondb);
+        _unitOfWork.Save();
     }
 }

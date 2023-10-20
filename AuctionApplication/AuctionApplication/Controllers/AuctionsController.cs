@@ -77,28 +77,52 @@ namespace AuctionApplication.Controllers
             }
             return View(vm);
         }
-        /*
+        
         // GET: AuctionsController/Edit/5
+        
         public ActionResult Edit(int id)
         {
-            return View();
+            Auction auction = _auctionService.GetById(id); //ALLA METODER SOM TAR EN RESURS (id eller något) BEHÖVER KONTROLLERA AUTENTICET
+            if (auction == null) return NotFound();
+            EditAuctionVM editAuctionVM = new EditAuctionVM
+            {
+                Id = auction.Id,
+                Title = auction.Title,
+                Description = auction.Description,
+                UserName = auction.UserName,
+                InitialPrice = auction.InitialPrice,
+                CreatedDate = auction.CreatedDate,
+                FinalDate = auction.FinalDate,
+                Status = auction.Status
+            };
+
+            return View(editAuctionVM);
         }
+        
 
         // POST: AuctionsController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public ActionResult Edit(Auction auction)
         {
-            try
+            
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(Index));
+                if (auction == null)
+                {
+                    return NotFound(); 
+                }
+                //auction.Description = description;
+                
+                _auctionService.UpdateAuctionDescription(auction);
+
+                return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+           
+            return View();
         }
 
+        /*
         // GET: AuctionsController/Delete/5
         public ActionResult Delete(int id)
         {

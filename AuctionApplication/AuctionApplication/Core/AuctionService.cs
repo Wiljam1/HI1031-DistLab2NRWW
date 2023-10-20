@@ -36,4 +36,9 @@ public class AuctionService : IAuctionService
     {
         return _auctionPersistence.GetById(id);
     }
+
+    public void UpdateAuctionDescription(Auction auction)
+    {
+       _auctionPersistence.UpdateAuctionDescription(auction);
+    }
 }
