@@ -22,12 +22,12 @@ namespace AuctionApplication.Controllers
             _userManager = userManager;
         }
 
-        //TODO: Låt ej inloggade användare få se alla auctions
+        [AllowAnonymous]
         // GET: AuctionsController
         public ActionResult Index() //visa alla auctions?
         {
-            string userName = User.Identity.Name; // should be unique
-            List<Auction> auctions = _auctionService.GetAllByUserName(userName);
+            //string userName = User.Identity.Name; // should be unique
+            List<Auction> auctions = _auctionService.GetAll();
             List<AuctionVM> auctionVMs = new();
             foreach (var auction in auctions)
             {
@@ -36,7 +36,20 @@ namespace AuctionApplication.Controllers
             return View(auctionVMs);
         }
 
-        
+        ////TODO: Lista alla auktioner där hen lagt bud och som är pågående
+        //// GET: AuctionsController
+        //public ActionResult Index() //visa alla auctions?
+        //{
+        //    string userName = User.Identity.Name; // should be unique
+        //    List<Auction> auctions = _auctionService.GetAllByUserName(userName);
+        //    List<AuctionVM> auctionVMs = new();
+        //    foreach (var auction in auctions)
+        //    {
+        //        auctionVMs.Add(AuctionVM.FromAuction(auction));
+        //    }
+        //    return View(auctionVMs);
+        //}
+
         // GET: AuctionsController/Details/5
         public ActionResult Details(int id) //visa detaljer om en auction
         {

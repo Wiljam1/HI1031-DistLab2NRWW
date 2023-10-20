@@ -58,6 +58,11 @@ public class Auction
         _bids.Add(newBid);
     }
 
+    public IEnumerable<Bid> GetSortedBidsByAmount()
+    {
+        return _bids.OrderByDescending(b => b.Amount);
+    }
+
     public bool IsCompleted()
     {
         //TODO: implement logic

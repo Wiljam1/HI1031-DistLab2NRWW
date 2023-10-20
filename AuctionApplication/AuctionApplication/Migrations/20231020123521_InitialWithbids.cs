@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace AuctionApplication.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialWithbids : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -166,15 +166,17 @@ namespace AuctionApplication.Migrations
             migrationBuilder.InsertData(
                 table: "AuctionDbs",
                 columns: new[] { "Id", "CreatedDate", "Description", "FinalDate", "InitialPrice", "Title", "UserName" },
-                values: new object[] { -1, new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1827), "Wooppp bra pris", new DateTime(2023, 10, 21, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1863), 30, "säljer något", "wiljam@kth.se" });
+                values: new object[] { -1, new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6405), "auktion med några bud", new DateTime(2023, 10, 21, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6451), 1, "Många bud", "wiljam@kth.se" });
 
             migrationBuilder.InsertData(
                 table: "BidDbs",
                 columns: new[] { "Id", "Amount", "AuctionId", "PlacedBidTime", "UserName" },
                 values: new object[,]
                 {
-                    { -2, 30, -1, new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1996), "inteWiljam@kth.se" },
-                    { -1, 15, -1, new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1993), "wiljam@kth.se" }
+                    { -4, 10, -1, new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6608), "inteWiljam@kth.se" },
+                    { -3, 100, -1, new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6606), "Wiljam@kth.se" },
+                    { -2, 30, -1, new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6604), "inteWiljam@kth.se" },
+                    { -1, 15, -1, new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6600), "wiljam@kth.se" }
                 });
 
             migrationBuilder.CreateIndex(

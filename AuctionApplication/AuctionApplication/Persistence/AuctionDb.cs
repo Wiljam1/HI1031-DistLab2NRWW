@@ -31,6 +31,5 @@ public class AuctionDb
     [DataType(DataType.DateTime)]
     public DateTime FinalDate { get; set; }
 
-
     public List<BidDb> BidDbs { get; set; } = new List<BidDb>();
 }
