@@ -4,6 +4,7 @@ using AuctionApplication.Core.Interfaces;
 using AuctionApplication.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -57,7 +58,7 @@ namespace AuctionApplication.Controllers
             if (auction == null) return NotFound();
 
             // check if current user "owns" this auction!
-            if(!auction.UserName.Equals(User.Identity.Name)) return BadRequest();
+            //if(!auction.UserName.Equals(User.Identity.Name)) return BadRequest();
 
             AuctionDetailsVM detailsVM = AuctionDetailsVM.FromAuction(auction);
             return View(detailsVM);
@@ -96,6 +97,7 @@ namespace AuctionApplication.Controllers
         public ActionResult Edit(int id)
         {
             Auction auction = _auctionService.GetById(id); //ALLA METODER SOM TAR EN RESURS (id eller något) BEHÖVER KONTROLLERA AUTENTICET
+            if (!auction.UserName.Equals(User.Identity.Name)) return Forbid();
             if (auction == null) return NotFound();
             EditAuctionVM editAuctionVM = new EditAuctionVM
             {
