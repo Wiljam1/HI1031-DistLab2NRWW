@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj": {}
+    "C:\\Users\\Niklas\\Documents\\GitHub\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj": {
+    "C:\\Users\\Niklas\\Documents\\GitHub\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
+        "projectUniqueName": "C:\\Users\\Niklas\\Documents\\GitHub\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
         "projectName": "AuctionApplication",
-        "projectPath": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
-        "packagesPath": "C:\\Users\\Wilja\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\obj\\",
+        "projectPath": "C:\\Users\\Niklas\\Documents\\GitHub\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
+        "packagesPath": "C:\\Users\\Niklas\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Niklas\\Documents\\GitHub\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Wilja\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Niklas\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
