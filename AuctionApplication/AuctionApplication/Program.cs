@@ -12,7 +12,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IAuctionService, AuctionService>();
 builder.Services.AddScoped<IAuctionPersistence, AuctionSqlPersistence>();
-
+//builder.Services.AddScoped(typeof(GenericRepository<>)); //???
 
 // db, with dependency injection
 builder.Services.AddDbContext<AuctionDbContext>(options =>

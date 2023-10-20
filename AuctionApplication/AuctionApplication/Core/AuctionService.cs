@@ -1,4 +1,6 @@
 ﻿using AuctionApplication.Core.Interfaces;
+using AuctionApplication.Persistence; // Kanske inte så bra
+using AutoMapper;
 
 namespace AuctionApplication.Core;
 
@@ -21,7 +23,7 @@ public class AuctionService : IAuctionService
     }
 
     public List<Auction> GetAll()
-    {
+    { 
         return _auctionPersistence.GetAll();
     }
 
