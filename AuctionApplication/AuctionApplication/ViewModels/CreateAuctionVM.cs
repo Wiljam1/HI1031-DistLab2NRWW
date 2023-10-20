@@ -17,7 +17,7 @@ public class CreateAuctionVM
     public string Description { get; set; }
 
     [Required]
-    [Range(0, Int32.MaxValue - 1, ErrorMessage = "InitialPrice must be greater than 0")]
+    [Range(0, Int32.MaxValue, ErrorMessage = "InitialPrice must be greater than 0")]
     public int InitialPrice { get; set; }
 
     [Required]

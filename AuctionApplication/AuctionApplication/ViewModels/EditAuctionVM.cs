@@ -12,20 +12,5 @@ namespace AuctionApplication.ViewModels
         public DateTime CreatedDate { get; set; }
         public DateTime FinalDate { get; set; }
         public Status Status { get; set; }
-
-        public static EditAuctionVM FromAuction(Auction auction)
-        {
-            return new EditAuctionVM()
-            {
-                Id = auction.Id,
-                Title = auction.Title,
-                Description = auction.Description,
-                UserName = auction.UserName,
-                InitialPrice = auction.InitialPrice,
-                CreatedDate = auction.CreatedDate,
-                FinalDate = auction.FinalDate,
-                Status = auction.Status
-            };
-        }
     }
 }

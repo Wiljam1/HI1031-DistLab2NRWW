@@ -27,6 +27,15 @@ public class AuctionSqlPersistence : IAuctionPersistence
         _unitOfWork.Save();
     }
 
+    public void Add(Bid bid, int auctionId)
+    {
+        BidDb bdb = _mapper.Map<BidDb>(bid);
+        bdb.AuctionId = auctionId; //FK
+
+        _unitOfWork.BidRepository.Insert(bdb);
+        _unitOfWork.Save();
+    }
+
     public List<Auction> GetAll()
     {
         //var auctionDbs = _dbContext.AuctionDbs.ToList();

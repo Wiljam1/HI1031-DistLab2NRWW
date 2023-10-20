@@ -21,6 +21,12 @@ public class AuctionService : IAuctionService
         _auctionPersistence.Add(auction);
     }
 
+    public void Add(Bid bid, int auctionId)
+    {
+        if (bid == null || bid.Id != 0) throw new InvalidDataException();
+        _auctionPersistence.Add(bid, auctionId);
+    }
+
     public List<Auction> GetAll()
     { 
         var allAuctions = _auctionPersistence.GetAll();
@@ -60,6 +66,18 @@ public class AuctionService : IAuctionService
         }
 
         return auctionWithSortedBids;
+    }
+
+    public int GetHighestBidForAuction(Auction auction)
+    {
+        var auctionBids = auction.Bids;
+        int highestBid = 0;
+        foreach (var bid in auctionBids)
+        {
+            if(bid.Amount > highestBid)
+                highestBid = bid.Amount;
+        }
+        return Math.Max(highestBid, auction.InitialPrice);
     }
 
     public void UpdateAuctionDescription(Auction auction)

@@ -93,7 +93,6 @@ namespace AuctionApplication.Controllers
         }
         
         // GET: AuctionsController/Edit/5
-        
         public ActionResult Edit(int id)
         {
             Auction auction = _auctionService.GetById(id); //ALLA METODER SOM TAR EN RESURS (id eller något) BEHÖVER KONTROLLERA AUTENTICET
@@ -135,6 +134,44 @@ namespace AuctionApplication.Controllers
             }
            
             return View();
+        }
+
+        // GET: AuctionsController/CreateBid/id
+        public ActionResult CreateBid(int id) // TODO: kanske ha med högsta budet här
+        {
+            // Place bid on Auction <id>
+            Auction auction = _auctionService.GetById(id);
+            if (auction.UserName.Equals(User.Identity.Name)) return Forbid("You can't place bids on your own auction!");
+            if (auction == null) return NotFound();
+
+            int highestBidAmount = _auctionService.GetHighestBidForAuction(auction);
+
+            var createBidVM = new CreateBidVM
+            {
+                Title = auction.Title,
+                AuctionId = id,
+                HighestBidAmount = highestBidAmount
+            };
+            return View(createBidVM);
+        }
+
+        // POST: AuctionsController/CreateBid/id
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CreateBid(CreateBidVM vm)
+        {
+            if (ModelState.IsValid)
+            {
+                if (vm.Amount <= vm.HighestBidAmount) 
+                    return View(vm);
+                else
+                {
+                    Bid bid = new Bid(User.Identity.Name, vm.Amount);
+                    _auctionService.Add(bid, vm.AuctionId);
+                    return RedirectToAction("Index");
+                }
+            }
+            return View(vm);
         }
 
         /*

@@ -15,9 +15,10 @@ public class Bid
         get => _placedBidTime;
     }
 
-    public Bid(string userName)
+    public Bid(string userName, int amount)
     {
         UserName = userName;
+        Amount = amount;
         _placedBidTime = DateTime.Now;
     }
 

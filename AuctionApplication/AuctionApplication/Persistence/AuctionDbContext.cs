@@ -74,4 +74,6 @@ public class AuctionDbContext : DbContext
     public DbSet<AuctionApplication.ViewModels.CreateAuctionVM> CreateAuctionVM { get; set; } = default!;
 
     public DbSet<AuctionApplication.ViewModels.EditAuctionVM> EditAuctionVM { get; set; } = default!;
+
+    public DbSet<AuctionApplication.ViewModels.CreateBidVM> CreateBidVM { get; set; } = default!;
 }
