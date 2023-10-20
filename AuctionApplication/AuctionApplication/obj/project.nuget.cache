@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "thr4RDuucCEN2dDX9UV2DQSjrZJJMLt2NfJBx1gedCVHDRQDaCUCiASnxJMXJFVdt3u8dO72ZfWcluTuLN/U+A==",
+  "dgSpecHash": "75MMpiZgF1VvXbthBTT8FVss6BjZIfXoDaHHW/VoVuLAOiqTbVE33Ss6ZAlwb5Hvfoa0pFRqqdYV7p2fkpa7AQ==",
   "success": true,
-  "projectFilePath": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
+  "projectFilePath": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Wilja\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Wilja\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",

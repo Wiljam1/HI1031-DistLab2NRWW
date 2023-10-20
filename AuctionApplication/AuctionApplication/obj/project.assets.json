@@ -11688,11 +11688,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
+      "projectUniqueName": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
       "projectName": "AuctionApplication",
-      "projectPath": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
+      "projectPath": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\AuctionApplication.csproj",
       "packagesPath": "C:\\Users\\Wilja\\.nuget\\packages\\",
-      "outputPath": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\AuctionApplication\\AuctionApplication\\obj\\",
+      "outputPath": "D:\\OneDrive - KTH\\Skrivbordet\\HI1031-DistribueradeSystem\\source\\repos\\HI1031-DistLab2NRWW\\AuctionApplication\\AuctionApplication\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Wilja\\AppData\\Roaming\\NuGet\\NuGet.Config",
