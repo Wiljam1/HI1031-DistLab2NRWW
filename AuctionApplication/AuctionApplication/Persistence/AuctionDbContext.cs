@@ -19,8 +19,11 @@ public class AuctionDbContext : DbContext
         AuctionDb adb = new AuctionDb
         {
             Id = -1, // from seed data
-            Title = "Learning ASP.NET Core with MVC",
+            Title = "säljer något",
+            Description = "Wooppp bra pris",
+            InitialPrice = 30,
             CreatedDate = DateTime.Now,
+            FinalDate = DateTime.Now.AddDays(1),
             UserName = "wiljam@kth.se",
             BidDbs = new List<BidDb>()
         };
@@ -29,22 +32,23 @@ public class AuctionDbContext : DbContext
         BidDb bdb1 = new BidDb()
         {
             Id = -1,
-            Description = "Follow the turtorials",
-            LastUpdated = DateTime.Now,
-            Status = Core.Status.IN_PROGRESS,
+            UserName = "wiljam@kth.se",
+            Amount = 15,
+            PlacedBidTime = DateTime.Now,
             AuctionId = -1,
         };
         BidDb bdb2 = new BidDb()
         {
             Id = -2,
-            Description = "Do it yourself!",
-            LastUpdated = DateTime.Now,
-            Status = Core.Status.NO_BID,
+            UserName = "inteWiljam@kth.se",
+            Amount = 30,
+            PlacedBidTime = DateTime.Now,
             AuctionId = -1
         };
         modelBuilder.Entity<BidDb>().HasData(bdb1);
         modelBuilder.Entity<BidDb>().HasData(bdb2);
     }
+
 
     public DbSet<AuctionApplication.Core.Auction> Auction { get; set; } = default!;
 

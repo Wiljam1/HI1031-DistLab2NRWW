@@ -9,6 +9,18 @@ public class CreateAuctionVM
 {
     //Allt som använder får mata in när den skapar en auktion.
     [Required]
-    [StringLength(128, ErrorMessage = "Max length 128 characters")]
+    [StringLength(32, ErrorMessage = "Max length 32 characters")]
     public string Title { get; set; }
+
+    [Required]
+    [StringLength(256, ErrorMessage = "Max length 256 characters")]
+    public string Description { get; set; }
+
+    [Required]
+    [Range(0, Int32.MaxValue - 1, ErrorMessage = "InitialPrice must be greater than 0")]
+    public int InitialPrice { get; set; }
+
+    [Required]
+    [DataType(DataType.DateTime)]
+    public DateTime FinalDate { get; set; }
 }

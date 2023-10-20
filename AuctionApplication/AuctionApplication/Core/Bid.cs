@@ -6,58 +6,40 @@ namespace AuctionApplication.Core;
 public class Bid
 {
     public int Id { get; set; }
-    public string Description { get; set; }
-    private DateTime _lastUpdated;
+    public string UserName { get; set; }
+    public int Amount { get; set; }
+    private DateTime _placedBidTime;
 
-    public DateTime LastUpdated
+    public DateTime PlacedBidTime
     {
-        get => _lastUpdated;
+        get => _placedBidTime;
     }
 
-    private Status _status;
-
-    public Status Status
+    public Bid(string userName)
     {
-        get => _status;
-        set
-        {
-            //TODO: Implement this
-            //if (_status == Status.DONE && value != Status.DoNE)
-              //  throw new InvalidOperationException("bid is donee");
-            _status = value;
-            _lastUpdated = DateTime.Now;
-        }
+        UserName = userName;
+        _placedBidTime = DateTime.Now;
     }
 
-    public Bid(string description, Status status = Status.NO_BID)
-    {
-        Description = description;
-        _lastUpdated = DateTime.Now;
-        _status = status;
-    }
-
-
-    public Bid(int id, string description, Status status = Status.NO_BID)
+    public Bid(int id, string userName)
     {
         Id = id;
-        Description = description;
-        _lastUpdated = DateTime.Now;
-        _status = status;
+        UserName = userName;
+        _placedBidTime = DateTime.Now;
     }
 
-    public Bid(int id, string description, DateTime lastUpdated, Status status = Status.NO_BID)
+    public Bid(int id, string userName, DateTime placedBidTime)
     {
         Id = id;
-        Description = description;
-        _lastUpdated = lastUpdated;
-        _status = status;
+        UserName = userName;
+        _placedBidTime = placedBidTime;
     }
 
     public Bid() { }
 
     public override string ToString()
     {
-        return $"{Id}: {Description} - {Status}";
+        return $"{Id}: {UserName} - {Amount}";
     }
 
 }

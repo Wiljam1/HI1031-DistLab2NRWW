@@ -10,15 +10,15 @@ public class BidDb
     public int Id { get; set; }
 
     [Required]
-    [MaxLength(256)]
-    public string Description { get; set; }
+    public string UserName { get; set; }
+
+    [Required]
+    [Range(0, Int32.MaxValue)]
+    public int Amount { get; set; }
 
     [Required]
     [DataType(DataType.DateTime)]
-    public DateTime LastUpdated { get; set; }
-
-    [Required]
-    public Status Status { get; set; }
+    public DateTime PlacedBidTime { get; set; }
 
     // FK and navigation property
     [ForeignKey("AuctionId")]

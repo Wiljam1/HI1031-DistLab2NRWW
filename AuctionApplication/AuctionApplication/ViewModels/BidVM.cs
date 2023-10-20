@@ -7,18 +7,16 @@ namespace AuctionApplication.ViewModels;
 public class BidVM
 {
     public int Id { get; set; }
-    public string Description { get; set; }
-    public DateTime LastUpdated { get; set; }
-    public Status Status { get; set; }
+    public string UserName { get; set; }
+    public DateTime PlacedBidTime { get; set; }
 
     public static BidVM FromBid(Bid bid)
     {
         return new BidVM
         {
             Id = bid.Id,
-            Description = bid.Description,
-            LastUpdated = bid.LastUpdated,
-            Status = bid.Status
+            UserName = bid.UserName,
+            PlacedBidTime = bid.PlacedBidTime
         };
     }
 }

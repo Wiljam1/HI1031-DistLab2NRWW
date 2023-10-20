@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AuctionApplication.Migrations
 {
     [DbContext(typeof(AuctionDbContext))]
-    [Migration("20231019170849_AuctionDbb_Username")]
-    partial class AuctionDbb_Username
+    [Migration("20231020100239_Initial")]
+    partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -36,6 +36,19 @@ namespace AuctionApplication.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FinalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InitialPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -57,15 +70,15 @@ namespace AuctionApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int?>("AuctionId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -85,10 +98,21 @@ namespace AuctionApplication.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime>("FinalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InitialPrice")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.Property<string>("UserName")
                         .IsRequired()
@@ -102,8 +126,11 @@ namespace AuctionApplication.Migrations
                         new
                         {
                             Id = -1,
-                            CreatedDate = new DateTime(2023, 10, 19, 19, 8, 49, 87, DateTimeKind.Local).AddTicks(2935),
-                            Title = "Learning ASP.NET Core with MVC",
+                            CreatedDate = new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1827),
+                            Description = "Wooppp bra pris",
+                            FinalDate = new DateTime(2023, 10, 21, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1863),
+                            InitialPrice = 30,
+                            Title = "säljer något",
                             UserName = "wiljam@kth.se"
                         });
                 });
@@ -116,19 +143,18 @@ namespace AuctionApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int>("AuctionId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasMaxLength(256)
-                        .HasColumnType("nvarchar(256)");
-
-                    b.Property<DateTime>("LastUpdated")
+                    b.Property<DateTime>("PlacedBidTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -140,18 +166,18 @@ namespace AuctionApplication.Migrations
                         new
                         {
                             Id = -1,
+                            Amount = 15,
                             AuctionId = -1,
-                            Description = "Follow the turtorials",
-                            LastUpdated = new DateTime(2023, 10, 19, 19, 8, 49, 87, DateTimeKind.Local).AddTicks(3138),
-                            Status = 1
+                            PlacedBidTime = new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1993),
+                            UserName = "wiljam@kth.se"
                         },
                         new
                         {
                             Id = -2,
+                            Amount = 30,
                             AuctionId = -1,
-                            Description = "Do it yourself!",
-                            LastUpdated = new DateTime(2023, 10, 19, 19, 8, 49, 87, DateTimeKind.Local).AddTicks(3141),
-                            Status = 0
+                            PlacedBidTime = new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1996),
+                            UserName = "inteWiljam@kth.se"
                         });
                 });
 
@@ -166,10 +192,24 @@ namespace AuctionApplication.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FinalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InitialPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -189,10 +229,24 @@ namespace AuctionApplication.Migrations
                     b.Property<DateTime>("CreatedDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<bool>("IsCompleted")
-                        .HasColumnType("bit");
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FinalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InitialPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
 
                     b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -212,15 +266,12 @@ namespace AuctionApplication.Migrations
                     b.Property<int?>("AuctionDetailsVMId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("LastUpdated")
+                    b.Property<DateTime>("PlacedBidTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -231,10 +282,21 @@ namespace AuctionApplication.Migrations
 
             modelBuilder.Entity("AuctionApplication.ViewModels.CreateAuctionVM", b =>
                 {
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<DateTime>("FinalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InitialPrice")
+                        .HasColumnType("int");
+
                     b.Property<string>("Title")
                         .IsRequired()
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
 
                     b.ToTable("CreateAuctionVM");
                 });

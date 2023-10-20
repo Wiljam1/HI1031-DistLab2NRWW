@@ -4,7 +4,9 @@
     ViewData["Title"] = "Create";
 }
 
-<h4>Create new auction</h4>
+<h1>Create</h1>
+
+<h4>Create auction</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,7 +17,21 @@
                 <input asp-for="Title" class="form-control" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            <br/>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="InitialPrice" class="control-label"></label>
+                <input asp-for="InitialPrice" class="form-control" />
+                <span asp-validation-for="InitialPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FinalDate" class="control-label"></label>
+                <input asp-for="FinalDate" class="form-control" />
+                <span asp-validation-for="FinalDate" class="text-danger"></span>
+            </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
