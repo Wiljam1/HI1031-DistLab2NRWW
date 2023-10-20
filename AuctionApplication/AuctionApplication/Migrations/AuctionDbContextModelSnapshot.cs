@@ -123,11 +123,11 @@ namespace AuctionApplication.Migrations
                         new
                         {
                             Id = -1,
-                            CreatedDate = new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1827),
-                            Description = "Wooppp bra pris",
-                            FinalDate = new DateTime(2023, 10, 21, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1863),
-                            InitialPrice = 30,
-                            Title = "säljer något",
+                            CreatedDate = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6405),
+                            Description = "auktion med några bud",
+                            FinalDate = new DateTime(2023, 10, 21, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6451),
+                            InitialPrice = 1,
+                            Title = "Många bud",
                             UserName = "wiljam@kth.se"
                         });
                 });
@@ -165,7 +165,7 @@ namespace AuctionApplication.Migrations
                             Id = -1,
                             Amount = 15,
                             AuctionId = -1,
-                            PlacedBidTime = new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1993),
+                            PlacedBidTime = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6600),
                             UserName = "wiljam@kth.se"
                         },
                         new
@@ -173,7 +173,23 @@ namespace AuctionApplication.Migrations
                             Id = -2,
                             Amount = 30,
                             AuctionId = -1,
-                            PlacedBidTime = new DateTime(2023, 10, 20, 12, 2, 39, 24, DateTimeKind.Local).AddTicks(1996),
+                            PlacedBidTime = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6604),
+                            UserName = "inteWiljam@kth.se"
+                        },
+                        new
+                        {
+                            Id = -3,
+                            Amount = 100,
+                            AuctionId = -1,
+                            PlacedBidTime = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6606),
+                            UserName = "Wiljam@kth.se"
+                        },
+                        new
+                        {
+                            Id = -4,
+                            Amount = 10,
+                            AuctionId = -1,
+                            PlacedBidTime = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6608),
                             UserName = "inteWiljam@kth.se"
                         });
                 });

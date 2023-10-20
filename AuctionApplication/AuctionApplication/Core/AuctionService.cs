@@ -41,6 +41,24 @@ public class AuctionService : IAuctionService
 
     public Auction GetById(int id)
     {
-        return _auctionPersistence.GetById(id);
+        var auction = _auctionPersistence.GetById(id);
+        IEnumerable<Bid> sortedBids = auction.GetSortedBidsByAmount();
+
+        var auctionWithSortedBids = new Auction
+        {
+            Id = auction.Id,
+            Title = auction.Title,
+            Description = auction.Description,
+            UserName = auction.UserName,
+            InitialPrice = auction.InitialPrice,
+            CreatedDate = auction.CreatedDate,
+            FinalDate = auction.FinalDate,
+        };
+        foreach (var bid in sortedBids)
+        {
+            auctionWithSortedBids.AddBid(bid);
+        }
+
+        return auctionWithSortedBids;
     }
 }

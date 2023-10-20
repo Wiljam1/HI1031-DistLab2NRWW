@@ -22,7 +22,6 @@ namespace AuctionApplication.Controllers
             _userManager = userManager;
         }
 
-        //TODO: Låt ej inloggade användare få se alla auctions
         [AllowAnonymous]
         // GET: AuctionsController
         public ActionResult Index() //visa alla auctions?

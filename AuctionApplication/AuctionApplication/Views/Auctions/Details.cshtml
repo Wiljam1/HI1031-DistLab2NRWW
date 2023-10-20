@@ -7,7 +7,7 @@
 <h1>Details</h1>
 
 <div>
-    <h4>Auction details</h4>
+    <h4>AuctionDetailsVM</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -54,6 +54,30 @@
         </dd>
     </dl>
 </div>
+
+<div>
+    <h4>Bids</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Amount</th>
+            <th>Placed Bid Time</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model.BidVMs)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.UserName)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Amount)</td>
+                    <td>@Html.DisplayFor(modelItem => item.PlacedBidTime)</td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.Id">Edit</a> |
     <a asp-action="Index">Back to List</a>

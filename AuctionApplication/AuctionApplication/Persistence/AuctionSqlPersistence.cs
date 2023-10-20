@@ -35,12 +35,6 @@ public class AuctionSqlPersistence : IAuctionPersistence
         List<Auction> result = new List<Auction>();
         foreach (AuctionDb adb in auctionDbs)
         {
-            //Auction auction = new Auction(
-
-            //    adb.Id,
-            //    adb.Title,
-            //    adb.CreatedDate);
-
             Auction auction = _mapper.Map<Auction>(adb);
             result.Add(auction);
         }
@@ -79,7 +73,7 @@ public class AuctionSqlPersistence : IAuctionPersistence
         var auctionDb = _unitOfWork.AuctionRepository.Get(includeProperties: "BidDbs")
             .Where(a => a.Id == id)
             .SingleOrDefault();
-
+       
         Auction auction = _mapper.Map<Auction>(auctionDb);
         foreach (BidDb bdb in auctionDb.BidDbs)
         {
