@@ -9,93 +9,97 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = AuctionApplication
 build_property.RootNamespace = AuctionApplication
-build_property.ProjectDir = C:\Users\Niklas\Documents\GitHub\HI1031-DistLab2NRWW\AuctionApplication\AuctionApplication\
+build_property.ProjectDir = D:\OneDrive - KTH\Skrivbordet\HI1031-DistribueradeSystem\source\repos\HI1031-DistLab2NRWW\AuctionApplication\AuctionApplication\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Niklas\Documents\GitHub\HI1031-DistLab2NRWW\AuctionApplication\AuctionApplication
+build_property.MSBuildProjectDirectory = D:\OneDrive - KTH\Skrivbordet\HI1031-DistribueradeSystem\source\repos\HI1031-DistLab2NRWW\AuctionApplication\AuctionApplication
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/Account/Login.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/Account/Logout.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/Account/Register.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/_ViewImports.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/_ViewStart.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/Create.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/ActiveBids.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcQWN0aXZlQmlkcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/CreateBid.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/CreateBid.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcQ3JlYXRlQmlkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/Details.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/Details.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcRGV0YWlscy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/Edit.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcRWRpdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/Index.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/MyWonAuctions.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcTXlXb25BdWN0aW9ucy5jc2h0bWw=
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Auctions/WonAuctions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXVjdGlvbnNcV29uQXVjdGlvbnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Home/Index.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Home/Privacy.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Shared/Error.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Shared/_LoginPartial.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/_ViewImports.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/_ViewStart.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Niklas/Documents/GitHub/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Shared/_Layout.cshtml]
+[D:/OneDrive - KTH/Skrivbordet/HI1031-DistribueradeSystem/source/repos/HI1031-DistLab2NRWW/AuctionApplication/AuctionApplication/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-pvbfvudpw7

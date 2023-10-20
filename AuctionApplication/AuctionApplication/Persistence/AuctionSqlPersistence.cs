@@ -36,11 +36,12 @@ public class AuctionSqlPersistence : IAuctionPersistence
         _unitOfWork.Save();
     }
 
+    // TODO: Reworka den här likt getById
     public List<Auction> GetAll()
     {
         //var auctionDbs = _dbContext.AuctionDbs.ToList();
-        var auctionDbs = _unitOfWork.AuctionRepository.Get(includeProperties: "BidDbs").ToList();
-
+        var auctionDbs = _unitOfWork.AuctionRepository.Get(includeProperties: "BidDbs")
+            .ToList();
 
         List<Auction> result = new List<Auction>();
         foreach (AuctionDb adb in auctionDbs)

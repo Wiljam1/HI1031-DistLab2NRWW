@@ -28,7 +28,7 @@ namespace AuctionApplication.Controllers
         public ActionResult Index() //visa alla auctions?
         {
             //string userName = User.Identity.Name; // should be unique
-            List<Auction> auctions = _auctionService.GetAll();
+            List<Auction> auctions = _auctionService.GetAllActive();
             List<AuctionVM> auctionVMs = new();
             foreach (var auction in auctions)
             {
@@ -172,13 +172,23 @@ namespace AuctionApplication.Controllers
             return View(vm);
         }
 
-        
+        // GET: AuctionsController/ActiveBids/
+        public ActionResult ActiveBids()
+        {
+            string userName = User.Identity.Name;
+            List<Auction> auctions = _auctionService.GetActiveAuctionsWithBid(userName);
+            List<AuctionVM> auctionVMs = new();
+            foreach (var auction in auctions)
+            {
+                auctionVMs.Add(AuctionVM.FromAuction(auction));
+            }
+            return View(auctionVMs);
+        }
 
-        public ActionResult MyWonAuctions() 
+        public ActionResult WonAuctions() 
         {
             string userName = User.Identity.Name; 
-            if (userName == null) return Forbid();
-            List<Auction> auctions = _auctionService.getMyWonAuctions(userName);
+            List<Auction> auctions = _auctionService.GetWonAuctions(userName);
             List<AuctionVM> auctionVMs = new();
             foreach (var auction in auctions)
             {
