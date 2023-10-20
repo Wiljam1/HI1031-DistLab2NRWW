@@ -24,8 +24,6 @@ public class AuctionSqlPersistence : IAuctionPersistence
         AuctionDb adb = _mapper.Map<AuctionDb>(auction);
         _unitOfWork.AuctionRepository.Insert(adb);
         _unitOfWork.Save();
-        //_dbContext.AuctionDbs.Add(adb);
-        //_dbContext.SaveChanges();
     }
 
     public List<Auction> GetAll()

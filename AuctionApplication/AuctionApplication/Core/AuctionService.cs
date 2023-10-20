@@ -1,5 +1,4 @@
 ﻿using AuctionApplication.Core.Interfaces;
-using AuctionApplication.Persistence; // Kanske inte så bra
 using AutoMapper;
 
 namespace AuctionApplication.Core;
@@ -24,7 +23,15 @@ public class AuctionService : IAuctionService
 
     public List<Auction> GetAll()
     { 
-        return _auctionPersistence.GetAll();
+        var allAuctions = _auctionPersistence.GetAll();
+
+        // Filter out auctions that have passed FinalDate & order by FinalDate
+        var activeAuctions = allAuctions
+            .Where(a => a.FinalDate > DateTime.Now)
+            .OrderBy(a => a.FinalDate)
+            .ToList();
+
+        return activeAuctions;
     }
 
     public List<Auction> GetAllByUserName(string userName)
