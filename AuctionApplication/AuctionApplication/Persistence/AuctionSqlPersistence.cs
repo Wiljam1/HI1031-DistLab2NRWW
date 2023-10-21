@@ -1,9 +1,6 @@
 ﻿using AuctionApplication.Core;
 using AuctionApplication.Core.Interfaces;
-using AuctionApplication.ViewModels;
 using AutoMapper;
-using Microsoft.CodeAnalysis.FlowAnalysis.DataFlow;
-using Microsoft.EntityFrameworkCore;
 
 namespace AuctionApplication.Persistence;
 
@@ -47,6 +44,10 @@ public class AuctionSqlPersistence : IAuctionPersistence
         foreach (AuctionDb adb in auctionDbs)
         {
             Auction auction = _mapper.Map<Auction>(adb);
+            foreach (var bid in adb.BidDbs)
+            {
+                auction.AddBid(_mapper.Map<Bid>(bid));
+            }
             result.Add(auction);
         }
         return result;

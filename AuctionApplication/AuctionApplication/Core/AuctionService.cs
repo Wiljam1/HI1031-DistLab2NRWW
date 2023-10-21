@@ -17,7 +17,6 @@ public class AuctionService : IAuctionService
         //assume no bids on new auction 
         //TODO: Gör Factory-mönster i Core där man skickar in värden och får korrekta objekt hit.
         if (auction == null || auction.Id != 0) throw new InvalidDataException();
-        auction.CreatedDate = DateTime.Now;
         _auctionPersistence.Add(auction);
     }
 
@@ -86,13 +85,11 @@ public class AuctionService : IAuctionService
         List<Auction> activeAuctionsWithBidFromUser = new List<Auction>();
         foreach (var auction in allActiveAuctions)
         {
-            Auction a = _auctionPersistence.GetById(auction.Id);
-            if (a.Bids.Any(bid => bid.UserName.Equals(userName)))
+            if (auction.Bids.Any(bid => bid.UserName.Equals(userName)))
             {
-                activeAuctionsWithBidFromUser.Add(a);
+                activeAuctionsWithBidFromUser.Add(auction);
             }
         }
-
         return activeAuctionsWithBidFromUser;
     }
 
@@ -102,21 +99,20 @@ public class AuctionService : IAuctionService
         List<Auction> myWonAuctions = new List<Auction>();
         foreach (var auction in auctions)
         {
-            Auction a = _auctionPersistence.GetById(auction.Id);
-            int highestBid = GetHighestBidForAuction(a);
-            if (highestBid != a.InitialPrice)
+            int highestBid = GetHighestBidForAuction(auction);
+            if (highestBid != auction.InitialPrice)
             {
-                foreach (var bid in a.Bids)
+                foreach (var bid in auction.Bids)
                 {
-                    if(highestBid == bid.Amount && bid.UserName.Equals(userName) && a.FinalDate < DateTime.Now)
+                    if(highestBid == bid.Amount && bid.UserName.Equals(userName) && auction.FinalDate < DateTime.Now)
                     {
-                        myWonAuctions.Add(a); break;
+                        myWonAuctions.Add(auction); break;
                     }
                 }
             }
-            else if (a.UserName.Equals(userName) && a.FinalDate < DateTime.Now)     //adds a won auction if no one bidded on the auction to the one whos auction it was
+            else if (auction.UserName.Equals(userName) && auction.FinalDate < DateTime.Now)     //adds a won auction if no one bidded on the auction to the one whos auction it was
             {
-                myWonAuctions.Add(a);
+                myWonAuctions.Add(auction);
             }
         }
         return myWonAuctions;

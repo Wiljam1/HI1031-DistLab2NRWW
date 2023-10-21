@@ -119,20 +119,16 @@ namespace AuctionApplication.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Auction auction)
         {
-            
             if (ModelState.IsValid)
             {
                 if (auction == null)
                 {
                     return NotFound(); 
                 }
-                //auction.Description = description;
-                
                 _auctionService.UpdateAuctionDescription(auction);
 
                 return RedirectToAction("Index");
             }
-           
             return View();
         }
 
@@ -141,7 +137,7 @@ namespace AuctionApplication.Controllers
         {
             // Place bid on Auction <id>
             Auction auction = _auctionService.GetById(id);
-            if (auction.UserName.Equals(User.Identity.Name)) return Forbid("You can't place bids on your own auction!");
+            if (auction.UserName.Equals(User.Identity.Name)) return Forbid();
             if (auction == null) return NotFound();
 
             int highestBidAmount = _auctionService.GetHighestBidForAuction(auction);
@@ -175,8 +171,7 @@ namespace AuctionApplication.Controllers
         // GET: AuctionsController/ActiveBids/
         public ActionResult ActiveBids()
         {
-            string userName = User.Identity.Name;
-            List<Auction> auctions = _auctionService.GetActiveAuctionsWithBid(userName);
+            List<Auction> auctions = _auctionService.GetActiveAuctionsWithBid(User.Identity.Name);
             List<AuctionVM> auctionVMs = new();
             foreach (var auction in auctions)
             {
@@ -187,8 +182,7 @@ namespace AuctionApplication.Controllers
 
         public ActionResult WonAuctions() 
         {
-            string userName = User.Identity.Name; 
-            List<Auction> auctions = _auctionService.GetWonAuctions(userName);
+            List<Auction> auctions = _auctionService.GetWonAuctions(User.Identity.Name);
             List<AuctionVM> auctionVMs = new();
             foreach (var auction in auctions)
             {
