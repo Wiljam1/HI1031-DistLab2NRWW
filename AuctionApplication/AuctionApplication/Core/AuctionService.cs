@@ -40,11 +40,6 @@ public class AuctionService : IAuctionService
         return activeAuctions;
     }
 
-    public List<Auction> GetAllByUserName(string userName)
-    {
-        return _auctionPersistence.GetAllByUserName(userName);
-    }
-
     public Auction GetById(int id)
     {
         var auction = _auctionPersistence.GetById(id);
@@ -99,7 +94,7 @@ public class AuctionService : IAuctionService
     public List<Auction> GetWonAuctions(string userName)
     {
         List<Auction> auctions = _auctionPersistence.GetAll();
-        List<Auction> myWonAuctions = new List<Auction>();
+        List<Auction> wonAuctions = new List<Auction>();
         foreach (var auction in auctions)
         {
             Auction a = _auctionPersistence.GetById(auction.Id);
@@ -108,18 +103,18 @@ public class AuctionService : IAuctionService
             {
                 foreach (var bid in a.Bids)
                 {
-                    if(highestBid == bid.Amount && bid.UserName.Equals(userName) && a.FinalDate < DateTime.Now)
+                    if(highestBid == bid.Amount && bid.UserName.Equals(userName) && a.IsCompleted())
                     {
-                        myWonAuctions.Add(a); break;
+                        wonAuctions.Add(a); break;
                     }
                 }
             }
             else if (a.UserName.Equals(userName) && a.FinalDate < DateTime.Now)     //adds a won auction if no one bidded on the auction to the one whos auction it was
             {
-                myWonAuctions.Add(a);
+                wonAuctions.Add(a);
             }
         }
-        return myWonAuctions;
+        return wonAuctions;
     }
 
     public void UpdateAuctionDescription(Auction auction)

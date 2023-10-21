@@ -14,17 +14,17 @@ builder.Services.AddScoped<IAuctionService, AuctionService>();
 builder.Services.AddScoped<IAuctionPersistence, AuctionSqlPersistence>();
 //builder.Services.AddScoped(typeof(GenericRepository<>)); //???
 
-// db, with dependency injection
+// Db, with dependency injection
 builder.Services.AddDbContext<AuctionDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AuctionDbConnection")));
 
-// identity config // AuctionApplicationIdentityContext
+// Identity config
 builder.Services.AddDbContext<AuctionApplicationIdentityContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("AuctionApplicationIdentityContextConnection")));
 builder.Services.AddDefaultIdentity<AuctionApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<AuctionApplicationIdentityContext>();
 
-// add automapper scanning (requires AutoMapper package)
+// Add AutoMapper scanning (requires AutoMapper package)
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();

@@ -2,7 +2,7 @@
 
 public class UnitOfWork : IDisposable
 {
-    private AuctionDbContext _context; // = new AuctionDbContext();
+    private AuctionDbContext _context;
     private GenericRepository<AuctionDb> auctionRepository;
     private GenericRepository<BidDb> bidRepository;
 

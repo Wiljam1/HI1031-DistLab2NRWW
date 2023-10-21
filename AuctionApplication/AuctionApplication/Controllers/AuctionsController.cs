@@ -25,9 +25,8 @@ namespace AuctionApplication.Controllers
 
         [AllowAnonymous]
         // GET: AuctionsController
-        public ActionResult Index() //visa alla auctions?
+        public ActionResult Index()
         {
-            //string userName = User.Identity.Name; // should be unique
             List<Auction> auctions = _auctionService.GetAllActive();
             List<AuctionVM> auctionVMs = new();
             foreach (var auction in auctions)
@@ -37,28 +36,11 @@ namespace AuctionApplication.Controllers
             return View(auctionVMs);
         }
 
-        ////TODO: Lista alla auktioner där hen lagt bud och som är pågående
-        //// GET: AuctionsController
-        //public ActionResult Index() //visa alla auctions?
-        //{
-        //    string userName = User.Identity.Name; // should be unique
-        //    List<Auction> auctions = _auctionService.GetAllByUserName(userName);
-        //    List<AuctionVM> auctionVMs = new();
-        //    foreach (var auction in auctions)
-        //    {
-        //        auctionVMs.Add(AuctionVM.FromAuction(auction));
-        //    }
-        //    return View(auctionVMs);
-        //}
-
         // GET: AuctionsController/Details/5
-        public ActionResult Details(int id) //visa detaljer om en auction
+        public ActionResult Details(int id)
         {
             Auction auction = _auctionService.GetById(id); //ALLA METODER SOM TAR EN RESURS (id eller något) BEHÖVER KONTROLLERA AUTENTICET
             if (auction == null) return NotFound();
-
-            // check if current user "owns" this auction!
-            //if(!auction.UserName.Equals(User.Identity.Name)) return BadRequest();
 
             AuctionDetailsVM detailsVM = AuctionDetailsVM.FromAuction(auction);
             return View(detailsVM);
@@ -81,7 +63,7 @@ namespace AuctionApplication.Controllers
                 {
                     Title = vm.Title,
                     Description = vm.Description,
-                    UserName = User.Identity.Name, // may be null if create auction page is accessed when not logged in.
+                    UserName = User.Identity.Name,
                     InitialPrice = vm.InitialPrice,
                     FinalDate = vm.FinalDate,
 
@@ -155,7 +137,7 @@ namespace AuctionApplication.Controllers
             return View(createBidVM);
         }
 
-        // POST: AuctionsController/CreateBid/id
+        // POST: AuctionsController/CreateBid/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult CreateBid(CreateBidVM vm)
@@ -167,7 +149,7 @@ namespace AuctionApplication.Controllers
 
                 Bid bid = new Bid(User.Identity.Name, vm.Amount);
                 _auctionService.Add(bid, vm.AuctionId);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = vm.AuctionId });
             }
             return View(vm);
         }

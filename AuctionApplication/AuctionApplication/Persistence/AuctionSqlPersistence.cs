@@ -9,13 +9,11 @@ namespace AuctionApplication.Persistence;
 
 public class AuctionSqlPersistence : IAuctionPersistence
 {
-    //private AuctionDbContext _dbContext;
     private UnitOfWork _unitOfWork;
     private IMapper _mapper;
 
     public AuctionSqlPersistence(AuctionDbContext dbContext, IMapper mapper)
     {
-        //_dbContext = dbContext;
         _unitOfWork = new UnitOfWork(dbContext);
         _mapper = mapper;
     }
@@ -41,26 +39,6 @@ public class AuctionSqlPersistence : IAuctionPersistence
     {
         //var auctionDbs = _dbContext.AuctionDbs.ToList();
         var auctionDbs = _unitOfWork.AuctionRepository.Get(includeProperties: "BidDbs")
-            .ToList();
-
-        List<Auction> result = new List<Auction>();
-        foreach (AuctionDb adb in auctionDbs)
-        {
-            Auction auction = _mapper.Map<Auction>(adb);
-            result.Add(auction);
-        }
-        return result;
-    }
-
-    public List<Auction> GetAllByUserName(string userName)
-    {
-        //var auctionDbs = _dbContext.AuctionDbs
-        //    .Where(a => a.UserName.Equals(userName)) //Updated for Identity
-        //    .Include(a => a.BidDbs)
-        //    .ToList();
-
-        var auctionDbs = _unitOfWork.AuctionRepository.Get(includeProperties: "BidDbs")
-            .Where(a => a.UserName.Equals(userName))
             .ToList();
 
         List<Auction> result = new List<Auction>();

@@ -1,4 +1,6 @@
-﻿namespace AuctionApplication.Core;
+﻿using Microsoft.IdentityModel.Tokens;
+
+namespace AuctionApplication.Core;
 
 //TODO: Update class according to assignment instructions
 public class Auction
@@ -15,13 +17,16 @@ public class Auction
 
     public Status Status
     {
-        get => _status;
+        get
+        {
+            IsCompleted();
+            return _status;
+        }
         set
         {
-            //TODO: Implement this
-            //if (_status == Status.DONE && value != Status.DoNE)
-            //  throw new InvalidOperationException("bid is donee");
-            //logic for when Status is changed
+            if (_status == Status.DONE && value != Status.DONE)
+              throw new InvalidOperationException("Auction is already finished!");
+            _status = value;
         }
     }
 
@@ -37,20 +42,6 @@ public class Auction
         FinalDate = finalDate;
     }
 
-    //public Auction(int id, string title, DateTime createdDate)
-    //{
-    //    Id = id;
-    //    Title = title;
-    //    CreatedDate = createdDate;
-    //}
-
-    //public Auction(int id, string title)
-    //{
-    //    Id = id;
-    //    Title = title;
-    //    CreatedDate = DateTime.Now;
-    //}
-
     public Auction() {}
 
     public void AddBid(Bid newBid)
@@ -65,7 +56,18 @@ public class Auction
 
     public bool IsCompleted()
     {
-        //TODO: implement logic
+        if (Bids.IsNullOrEmpty())
+        {
+            _status = Status.NO_BID;
+            return false;
+        }
+        if (FinalDate < DateTime.Now)
+        {
+            _status = Status.DONE;
+            return true;
+        }
+
+        _status = Status.IN_PROGRESS;
         return false;
     }
 
