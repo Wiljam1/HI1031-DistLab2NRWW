@@ -100,7 +100,7 @@ public class AuctionService : IAuctionService
                 if (highestBid != auction.InitialPrice)
                 {
                     var winningBid = auction.Bids.FirstOrDefault(bid => bid.Amount == highestBid && bid.UserName.Equals(userName));
-                    return winningBid != null && auction.IsCompleted();
+                    return winningBid != null && auction.IsExpired();
                 }
                 return auction.UserName.Equals(userName) && auction.FinalDate < DateTime.Now;
             })

@@ -19,7 +19,7 @@ public class Auction
     {
         get
         {
-            IsCompleted();
+            CalculateStatus();
             return _status;
         }
         set
@@ -54,21 +54,18 @@ public class Auction
         return _bids.OrderByDescending(b => b.Amount);
     }
 
-    public bool IsCompleted()
+    public void CalculateStatus()
     {
         if (Bids.IsNullOrEmpty())
         {
             _status = Status.NO_BID;
-            return false;
         }
-        if (FinalDate < DateTime.Now)
+        else if (FinalDate < DateTime.Now)
         {
             _status = Status.DONE;
-            return true;
         }
-
-        _status = Status.IN_PROGRESS;
-        return false;
+        else
+            _status = Status.IN_PROGRESS;
     }
 
     public bool IsExpired()
@@ -78,6 +75,6 @@ public class Auction
 
     public override string ToString()
     {
-        return $"{Id}: {Title} - completed: {IsCompleted()}";
+        return $"{Id}: {Title} - completed: {IsExpired()}";
     }
 }

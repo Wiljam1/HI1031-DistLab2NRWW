@@ -79,7 +79,7 @@ namespace AuctionApplication.Controllers
         public ActionResult Edit(int id)
         {
             Auction auction = _auctionService.GetById(id);
-            if (!auction.UserName.Equals(User.Identity.Name) || auction.IsCompleted()) return Forbid();
+            if (!auction.UserName.Equals(User.Identity.Name) || auction.IsExpired()) return Forbid();
             if (auction == null) return NotFound();
             EditAuctionVM editAuctionVM = new EditAuctionVM
             {
@@ -115,7 +115,7 @@ namespace AuctionApplication.Controllers
         public ActionResult CreateBid(int id)
         {
             Auction auction = _auctionService.GetById(id);
-            if (auction.UserName.Equals(User.Identity.Name) || auction.IsCompleted()) return Forbid();
+            if (auction.UserName.Equals(User.Identity.Name) || auction.IsExpired()) return Forbid();
             if (auction == null) return NotFound();
 
             int highestBidAmount = _auctionService.GetHighestBidForAuction(auction);
