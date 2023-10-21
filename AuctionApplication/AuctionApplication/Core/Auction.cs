@@ -57,13 +57,9 @@ public class Auction
     public void CalculateStatus()
     {
         if (Bids.IsNullOrEmpty())
-        {
             _status = Status.NO_BID;
-        }
-        else if (FinalDate < DateTime.Now)
-        {
+        else if (IsExpired())
             _status = Status.DONE;
-        }
         else
             _status = Status.IN_PROGRESS;
     }
