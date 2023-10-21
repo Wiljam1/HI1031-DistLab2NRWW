@@ -71,10 +71,13 @@ public class Auction
         return false;
     }
 
+    public bool IsExpired()
+    {
+        return FinalDate < DateTime.Now;
+    }
+
     public override string ToString()
     {
         return $"{Id}: {Title} - completed: {IsCompleted()}";
     }
-
-
 }

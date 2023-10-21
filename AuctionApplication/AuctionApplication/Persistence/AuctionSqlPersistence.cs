@@ -30,11 +30,15 @@ public class AuctionSqlPersistence : IAuctionPersistence
         _unitOfWork.BidRepository.Insert(bdb);
         _unitOfWork.Save();
     }
+    public void UpdateAuctionDescription(Auction auction)
+    {
+        AuctionDb auctiondb = _mapper.Map<AuctionDb>(auction);
+        _unitOfWork.AuctionRepository.Update(auctiondb);
+        _unitOfWork.Save();
+    }
 
-    // TODO: Reworka den här likt getById
     public List<Auction> GetAll()
     {
-        //var auctionDbs = _dbContext.AuctionDbs.ToList();
         var auctionDbs = _unitOfWork.AuctionRepository.Get(includeProperties: "BidDbs")
             .ToList();
 
@@ -53,13 +57,6 @@ public class AuctionSqlPersistence : IAuctionPersistence
 
     public Auction GetById(int id)
     {
-        //eager loading
-        //var auctionDb = _dbContext.AuctionDbs
-        //    .Include(a => a.BidDbs)
-        //    .Where(a => a.Id == id)
-        //    .SingleOrDefault();
-
-        // kanske inte eager loading längre
         var auctionDb = _unitOfWork.AuctionRepository.Get(includeProperties: "BidDbs")
             .Where(a => a.Id == id)
             .SingleOrDefault();
@@ -73,10 +70,4 @@ public class AuctionSqlPersistence : IAuctionPersistence
         return auction;
     }
 
-    public void UpdateAuctionDescription(Auction auction)
-    {
-        AuctionDb auctiondb = _mapper.Map<AuctionDb>(auction);
-        _unitOfWork.AuctionRepository.Update(auctiondb);
-        _unitOfWork.Save();
-    }
 }

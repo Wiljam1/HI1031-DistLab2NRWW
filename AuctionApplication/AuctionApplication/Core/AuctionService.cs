@@ -12,18 +12,22 @@ public class AuctionService : IAuctionService
         _auctionPersistence = auctionPersistence;
     }
 
-    public void Add(Auction auction)
+    public bool Add(Auction auction)
     {
-        //assume no bids on new auction 
-        //TODO: Gör Factory-mönster i Core där man skickar in värden och får korrekta objekt hit.
-        if (auction == null || auction.Id != 0) throw new InvalidDataException();
+        if (auction.Id != 0 || auction.IsExpired())
+            return false;
+
         _auctionPersistence.Add(auction);
+        return true;
     }
 
-    public void Add(Bid bid, int auctionId)
+    public bool Add(Bid bid, int auctionId)
     {
-        if (bid == null || bid.Id != 0) throw new InvalidDataException();
+        if (bid.Id != 0 || bid.Amount < 0) 
+            return false;
+
         _auctionPersistence.Add(bid, auctionId);
+        return true;
     }
 
     public List<Auction> GetAllActive()
@@ -76,40 +80,32 @@ public class AuctionService : IAuctionService
 
     public List<Auction> GetActiveAuctionsWithBid(string userName)
     {
-        List<Auction> allActiveAuctions = GetAllActive();
-        List<Auction> activeAuctionsWithBidFromUser = new List<Auction>();
-        foreach (var auction in allActiveAuctions)
-        {
-            if (auction.Bids.Any(bid => bid.UserName.Equals(userName)))
-            {
-                activeAuctionsWithBidFromUser.Add(auction);
-            }
-        }
+        var allActiveAuctions = GetAllActive();
+
+        var activeAuctionsWithBidFromUser = allActiveAuctions
+            .Where(auction => auction.Bids.Any(bid => bid.UserName.Equals(userName)))
+            .ToList();
+
         return activeAuctionsWithBidFromUser;
     }
 
     public List<Auction> GetWonAuctions(string userName)
     {
-        List<Auction> auctions = _auctionPersistence.GetAll();
-        List<Auction> wonAuctions = new List<Auction>();
-        foreach (var auction in auctions)
-        {
-            int highestBid = GetHighestBidForAuction(auction);
-            if (highestBid != auction.InitialPrice)
+        var auctions = _auctionPersistence.GetAll();
+
+        var wonAuctions = auctions
+            .Where(auction =>
             {
-                foreach (var bid in auction.Bids)
+                int highestBid = GetHighestBidForAuction(auction);
+                if (highestBid != auction.InitialPrice)
                 {
-                    if(highestBid == bid.Amount && bid.UserName.Equals(userName) && auction.IsCompleted())
-                    {
-                        wonAuctions.Add(auction); break;
-                    }
+                    var winningBid = auction.Bids.FirstOrDefault(bid => bid.Amount == highestBid && bid.UserName.Equals(userName));
+                    return winningBid != null && auction.IsCompleted();
                 }
-            }
-            else if (auction.UserName.Equals(userName) && auction.FinalDate < DateTime.Now)     //adds a won auction if no one bidded on the auction to the one whos auction it was
-            {
-                wonAuctions.Add(auction);
-            }
-        }
+                return auction.UserName.Equals(userName) && auction.FinalDate < DateTime.Now;
+            })
+            .ToList();
+
         return wonAuctions;
     }
 

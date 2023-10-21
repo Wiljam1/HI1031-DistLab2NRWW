@@ -20,9 +20,6 @@ namespace AuctionApplication.Controllers
 
         public IActionResult Privacy()
         {
-            //Hämta data från databasen
-            //Kontrollera autenticiet
-            //Skapa view
             return View();
         }
 

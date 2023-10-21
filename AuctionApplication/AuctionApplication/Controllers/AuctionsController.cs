@@ -39,7 +39,7 @@ namespace AuctionApplication.Controllers
         // GET: AuctionsController/Details/5
         public ActionResult Details(int id)
         {
-            Auction auction = _auctionService.GetById(id); //ALLA METODER SOM TAR EN RESURS (id eller något) BEHÖVER KONTROLLERA AUTENTICET
+            Auction auction = _auctionService.GetById(id);
             if (auction == null) return NotFound();
 
             AuctionDetailsVM detailsVM = AuctionDetailsVM.FromAuction(auction);
@@ -68,8 +68,9 @@ namespace AuctionApplication.Controllers
                     FinalDate = vm.FinalDate,
 
                 };
-                _auctionService.Add(auction);
-                return RedirectToAction("Index");
+
+                if(_auctionService.Add(auction))
+                    return RedirectToAction("Index");
             }
             return View(vm);
         }
@@ -77,8 +78,8 @@ namespace AuctionApplication.Controllers
         // GET: AuctionsController/Edit/5
         public ActionResult Edit(int id)
         {
-            Auction auction = _auctionService.GetById(id); //ALLA METODER SOM TAR EN RESURS (id eller något) BEHÖVER KONTROLLERA AUTENTICET
-            if (!auction.UserName.Equals(User.Identity.Name)) return Forbid();
+            Auction auction = _auctionService.GetById(id);
+            if (!auction.UserName.Equals(User.Identity.Name) || auction.IsCompleted()) return Forbid();
             if (auction == null) return NotFound();
             EditAuctionVM editAuctionVM = new EditAuctionVM
             {
@@ -103,10 +104,6 @@ namespace AuctionApplication.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (auction == null)
-                {
-                    return NotFound(); 
-                }
                 _auctionService.UpdateAuctionDescription(auction);
 
                 return RedirectToAction("Index");
@@ -115,11 +112,10 @@ namespace AuctionApplication.Controllers
         }
 
         // GET: AuctionsController/CreateBid/id
-        public ActionResult CreateBid(int id) // TODO: kanske ha med högsta budet här
+        public ActionResult CreateBid(int id)
         {
-            // Place bid on Auction <id>
             Auction auction = _auctionService.GetById(id);
-            if (auction.UserName.Equals(User.Identity.Name)) return Forbid();
+            if (auction.UserName.Equals(User.Identity.Name) || auction.IsCompleted()) return Forbid();
             if (auction == null) return NotFound();
 
             int highestBidAmount = _auctionService.GetHighestBidForAuction(auction);
@@ -162,6 +158,7 @@ namespace AuctionApplication.Controllers
             return View(auctionVMs);
         }
 
+        // GET: AuctionsController/WonAuctions/
         public ActionResult WonAuctions() 
         {
             List<Auction> auctions = _auctionService.GetWonAuctions(User.Identity.Name);
@@ -174,6 +171,7 @@ namespace AuctionApplication.Controllers
         }
 
         /*
+         --- NOT IMPLEMENTED ---
         // GET: AuctionsController/Delete/5
         public ActionResult Delete(int id)
         {
@@ -194,6 +192,7 @@ namespace AuctionApplication.Controllers
                 return View();
             }
         }
+        --- ---
         */
     }
 }

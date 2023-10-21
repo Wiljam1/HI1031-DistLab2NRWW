@@ -2,8 +2,6 @@
 
 namespace AuctionApplication.ViewModels;
 
-
-// TODO: ViewModels kan fixas med automapper?
 public class BidVM
 {
     public int Id { get; set; }

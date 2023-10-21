@@ -2,7 +2,6 @@
 
 namespace AuctionApplication.Core;
 
-//TODO: Update class according to assignment instructions
 public class Bid
 {
     public int Id { get; set; }
