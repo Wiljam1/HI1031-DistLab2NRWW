@@ -70,4 +70,59 @@ public class AuctionSqlPersistence : IAuctionPersistence
         return auction;
     }
 
+    public List<Auction> GetAllActive()
+    {
+        var allAuctions = GetAll();
+
+        // Filter out auctions that have passed FinalDate & order by FinalDate
+        var activeAuctions = allAuctions
+            .Where(a => a.FinalDate > DateTime.Now)
+            .OrderBy(a => a.FinalDate)
+            .ToList();
+
+        return activeAuctions;
+    }
+
+    public List<Auction> GetWonAuctions(string username)
+    {
+        var auctions = GetAll();
+
+        var wonAuctions = auctions
+            .Where(auction =>
+            {
+                int highestBid = GetHighestBidForAuction(auction);
+                if (highestBid != auction.InitialPrice)
+                {
+                    var winningBid = auction.Bids.FirstOrDefault(bid => bid.Amount == highestBid && bid.UserName.Equals(username));
+                    return winningBid != null && auction.IsExpired();
+                }
+                return auction.UserName.Equals(username) && auction.FinalDate < DateTime.Now;
+            })
+            .ToList();
+
+        return wonAuctions;
+    }
+
+    public List<Auction> GetActiveAuctionsWithBid(string username)
+    {
+        var allActiveAuctions = GetAllActive();
+
+        var activeAuctionsWithBidFromUser = allActiveAuctions
+            .Where(auction => auction.Bids.Any(bid => bid.UserName.Equals(username)))
+            .ToList();
+
+        return activeAuctionsWithBidFromUser;
+    }
+
+    private int GetHighestBidForAuction(Auction auction)
+    {
+        var auctionBids = auction.Bids;
+        int highestBid = 0;
+        foreach (var bid in auctionBids)
+        {
+            if (bid.Amount > highestBid)
+                highestBid = bid.Amount;
+        }
+        return Math.Max(highestBid, auction.InitialPrice);
+    }
 }

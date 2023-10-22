@@ -3,7 +3,7 @@
     public interface IAuctionService
     {
         List<Auction> GetAllActive();
-        List<Auction> GetWonAuctions(string userName);
+        List<Auction> GetWonAuctions(string username);
         List<Auction> GetActiveAuctionsWithBid(string username);
         Auction GetById(int id);
         bool Add(Auction auction);
