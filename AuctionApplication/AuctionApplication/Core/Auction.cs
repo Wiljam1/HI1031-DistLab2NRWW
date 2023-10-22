@@ -71,6 +71,13 @@ public class Auction
 
     public override string ToString()
     {
-        return $"{Id}: {Title} - completed: {IsExpired()}";
+        return $"Auction ID: {Id}\n" +
+               $"Title: {Title}\n" +
+               $"Description: {Description}\n" +
+               $"Seller: {UserName}\n" +
+               $"Initial Price: {InitialPrice}\n" +
+               $"Created Date: {CreatedDate}\n" +
+               $"Final Date: {FinalDate}\n" +
+               $"Status: {Status}\n";
     }
 }

@@ -65,6 +65,7 @@ namespace AuctionApplication.Controllers
                     Description = vm.Description,
                     UserName = User.Identity.Name,
                     InitialPrice = vm.InitialPrice,
+                    CreatedDate = DateTime.Now,
                     FinalDate = vm.FinalDate,
 
                 };
@@ -106,7 +107,7 @@ namespace AuctionApplication.Controllers
             {
                 _auctionService.UpdateAuctionDescription(auction);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = auction.Id });
             }
             return View();
         }

@@ -16,10 +16,10 @@ public class AuctionDbContext : DbContext
     {
         AuctionDb adb = new AuctionDb
         {
-            Id = -1, // from seed data
-            Title = "Många bud",
-            Description = "auktion med några bud",
-            InitialPrice = 1,
+            Id = 1, // from seed data
+            Title = "BMW E30",
+            Description = "En schysst BMW. Typ i nyskick.",
+            InitialPrice = 5000,
             CreatedDate = DateTime.Now,
             FinalDate = DateTime.Now.AddDays(1),
             UserName = "wiljam@kth.se",
@@ -29,35 +29,35 @@ public class AuctionDbContext : DbContext
 
         BidDb bdb1 = new BidDb()
         {
-            Id = -1,
-            UserName = "wiljam@kth.se",
-            Amount = 15,
+            Id = 1,
+            UserName = "niklas@kth.se",
+            Amount = 5500,
             PlacedBidTime = DateTime.Now,
-            AuctionId = -1, 
+            AuctionId = 1, 
         };
         BidDb bdb2 = new BidDb()
         {
-            Id = -2,
+            Id = 2,
             UserName = "inteWiljam@kth.se",
-            Amount = 30,
+            Amount = 7500,
             PlacedBidTime = DateTime.Now,
-            AuctionId = -1,
+            AuctionId = 1,
         };
         BidDb bdb3 = new BidDb()
         {
-            Id = -3,
-            UserName = "Wiljam@kth.se",
-            Amount = 100,
+            Id = 3,
+            UserName = "niklas@kth.se",
+            Amount = 8000,
             PlacedBidTime = DateTime.Now,
-            AuctionId = -1, 
+            AuctionId = 1, 
         };
         BidDb bdb4 = new BidDb()
         {
-            Id = -4,
+            Id = 4,
             UserName = "inteWiljam@kth.se",
-            Amount = 10,
+            Amount = 9000,
             PlacedBidTime = DateTime.Now,
-            AuctionId = -1,
+            AuctionId = 1,
         };
         modelBuilder.Entity<BidDb>().HasData(bdb1);
         modelBuilder.Entity<BidDb>().HasData(bdb2);

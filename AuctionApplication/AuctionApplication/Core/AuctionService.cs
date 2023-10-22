@@ -25,7 +25,8 @@ public class AuctionService : IAuctionService
     {
         if (bid.Id != 0 || bid.Amount < 0) 
             return false;
-        if (GetHighestBidForAuction(GetById(auctionId)) >= bid.Amount)
+        var auction = GetById(auctionId);
+        if (GetHighestBidForAuction(auction) >= bid.Amount || auction.IsExpired())
             return false;
 
         _auctionPersistence.Add(bid, auctionId);

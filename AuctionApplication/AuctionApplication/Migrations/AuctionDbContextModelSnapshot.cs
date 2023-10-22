@@ -122,12 +122,12 @@ namespace AuctionApplication.Migrations
                     b.HasData(
                         new
                         {
-                            Id = -1,
-                            CreatedDate = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6405),
-                            Description = "auktion med några bud",
-                            FinalDate = new DateTime(2023, 10, 21, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6451),
-                            InitialPrice = 1,
-                            Title = "Många bud",
+                            Id = 1,
+                            CreatedDate = new DateTime(2023, 10, 22, 13, 37, 0, 358, DateTimeKind.Local).AddTicks(8586),
+                            Description = "En schysst BMW. Typ i nyskick.",
+                            FinalDate = new DateTime(2023, 10, 23, 13, 37, 0, 358, DateTimeKind.Local).AddTicks(8626),
+                            InitialPrice = 5000,
+                            Title = "BMW E30",
                             UserName = "wiljam@kth.se"
                         });
                 });
@@ -162,34 +162,34 @@ namespace AuctionApplication.Migrations
                     b.HasData(
                         new
                         {
-                            Id = -1,
-                            Amount = 15,
-                            AuctionId = -1,
-                            PlacedBidTime = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6600),
-                            UserName = "wiljam@kth.se"
+                            Id = 1,
+                            Amount = 5500,
+                            AuctionId = 1,
+                            PlacedBidTime = new DateTime(2023, 10, 22, 13, 37, 0, 358, DateTimeKind.Local).AddTicks(8772),
+                            UserName = "niklas@kth.se"
                         },
                         new
                         {
-                            Id = -2,
-                            Amount = 30,
-                            AuctionId = -1,
-                            PlacedBidTime = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6604),
+                            Id = 2,
+                            Amount = 7500,
+                            AuctionId = 1,
+                            PlacedBidTime = new DateTime(2023, 10, 22, 13, 37, 0, 358, DateTimeKind.Local).AddTicks(8775),
                             UserName = "inteWiljam@kth.se"
                         },
                         new
                         {
-                            Id = -3,
-                            Amount = 100,
-                            AuctionId = -1,
-                            PlacedBidTime = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6606),
-                            UserName = "Wiljam@kth.se"
+                            Id = 3,
+                            Amount = 8000,
+                            AuctionId = 1,
+                            PlacedBidTime = new DateTime(2023, 10, 22, 13, 37, 0, 358, DateTimeKind.Local).AddTicks(8777),
+                            UserName = "niklas@kth.se"
                         },
                         new
                         {
-                            Id = -4,
-                            Amount = 10,
-                            AuctionId = -1,
-                            PlacedBidTime = new DateTime(2023, 10, 20, 14, 35, 21, 439, DateTimeKind.Local).AddTicks(6608),
+                            Id = 4,
+                            Amount = 9000,
+                            AuctionId = 1,
+                            PlacedBidTime = new DateTime(2023, 10, 22, 13, 37, 0, 358, DateTimeKind.Local).AddTicks(8779),
                             UserName = "inteWiljam@kth.se"
                         });
                 });
@@ -276,6 +276,9 @@ namespace AuctionApplication.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
                     b.Property<int?>("AuctionDetailsVMId")
                         .HasColumnType("int");
 
@@ -312,6 +315,61 @@ namespace AuctionApplication.Migrations
                         .HasColumnType("nvarchar(32)");
 
                     b.ToTable("CreateAuctionVM");
+                });
+
+            modelBuilder.Entity("AuctionApplication.ViewModels.CreateBidVM", b =>
+                {
+                    b.Property<int>("Amount")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AuctionId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("HighestBidAmount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.ToTable("CreateBidVM");
+                });
+
+            modelBuilder.Entity("AuctionApplication.ViewModels.EditAuctionVM", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("FinalDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InitialPrice")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EditAuctionVM");
                 });
 
             modelBuilder.Entity("AuctionApplication.Core.Bid", b =>
