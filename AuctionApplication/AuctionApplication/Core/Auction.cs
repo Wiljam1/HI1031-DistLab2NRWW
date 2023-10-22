@@ -54,7 +54,7 @@ public class Auction
         return _bids.OrderByDescending(b => b.Amount);
     }
 
-    public void CalculateStatus()
+    private void CalculateStatus()
     {
         if (Bids.IsNullOrEmpty())
             _status = Status.NO_BID;
